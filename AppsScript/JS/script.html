@@ -1,1 +1,366 @@
+<script>
 
+/****************************************************
+ SENSI MAINTENANCE PLATFORM V2
+ JAVASCRIPT PRINCIPAL
+****************************************************/
+
+
+// URL da aplicação
+
+let APP_URL = "";
+
+
+
+
+// Inicialização
+
+window.onload = function(){
+
+
+    google.script.run
+    .withSuccessHandler(function(url){
+
+        APP_URL = url;
+
+
+    })
+    .getAppUrl();
+
+
+
+};
+
+
+
+
+
+// LOGIN
+
+function login(){
+
+
+    const utilizador =
+        document.getElementById("utilizador").value;
+
+
+    const password =
+        document.getElementById("password").value;
+
+
+
+    google.script.run
+
+    .withSuccessHandler(function(resposta){
+
+
+        if(resposta.sucesso){
+
+
+            window.open(
+                APP_URL + "?dashboard=1",
+                "_top"
+            );
+
+
+        }
+        else{
+
+
+            alert(
+              "Utilizador ou palavra-passe incorretos."
+            );
+
+
+        }
+
+
+
+    })
+
+
+    .validarLogin(
+        utilizador,
+        password
+    );
+
+
+}
+
+
+
+
+
+// DASHBOARD
+
+
+function carregarDashboard(){
+
+
+    google.script.run
+
+    .withSuccessHandler(
+        preencherDashboard
+    )
+
+    .getDashboard();
+
+
+
+}
+
+
+
+function preencherDashboard(dados){
+
+
+    if(!dados)
+        return;
+
+
+
+    document
+    .getElementById("kpiPendentes")
+    .innerHTML =
+    dados.pendentes;
+
+
+
+    document
+    .getElementById("kpiCurso")
+    .innerHTML =
+    dados.emCurso;
+
+
+
+    document
+    .getElementById("kpiEquipamentos")
+    .innerHTML =
+    dados.equipamentos;
+
+
+
+    document
+    .getElementById("kpiPreventivas")
+    .innerHTML =
+    dados.preventivas || 0;
+
+
+
+    let html = "";
+
+
+
+    dados.ultimasOT.forEach(function(ot){
+
+
+        html += `
+
+        <tr>
+
+        <td>${ot.id}</td>
+
+        <td>${ot.equipamento}</td>
+
+        <td>${ot.estado}</td>
+
+        <td>${ot.responsavel}</td>
+
+        <td>${ot.prioridade}</td>
+
+
+        </tr>
+
+        `;
+
+
+    });
+
+
+
+    if(html==""){
+
+
+        html =
+        "<tr><td colspan='5'>Sem dados</td></tr>";
+
+
+    }
+
+
+
+    document
+    .getElementById("tabelaOT")
+    .innerHTML = html;
+
+
+
+}
+
+
+
+
+
+// NAVEGAÇÃO
+
+
+function carregarPagina(nome){
+
+
+    const destino =
+    document.getElementById("conteudo");
+
+
+
+    if(!destino)
+        return;
+
+
+
+    destino.innerHTML =
+    "<h3>A carregar...</h3>";
+
+
+
+    google.script.run
+
+    .withSuccessHandler(function(html){
+
+
+
+        destino.innerHTML = html;
+
+
+
+        if(nome=="listaOT"){
+
+
+            carregarListaOT();
+
+
+        }
+
+
+
+    })
+
+
+    .withFailureHandler(function(err){
+
+
+        destino.innerHTML =
+        "<p>Erro: "
+        + err.message +
+        "</p>";
+
+
+    })
+
+
+    .getPagina(nome);
+
+
+
+}
+
+
+
+
+
+
+// LISTA OT
+
+
+function carregarListaOT(){
+
+
+    google.script.run
+
+    .withSuccessHandler(
+        preencherListaOT
+    )
+
+    .getOrdensTrabalho();
+
+
+
+}
+
+
+
+
+function preencherListaOT(lista){
+
+
+    let html="";
+
+
+
+    lista.forEach(function(ot){
+
+
+        html += `
+
+        <tr>
+
+        <td>${ot.id}</td>
+
+        <td>${ot.equipamento}</td>
+
+        <td>${ot.estado}</td>
+
+        <td>${ot.responsavel}</td>
+
+        <td>${ot.prioridade}</td>
+
+        <td>
+        <button onclick="abrirOT('${ot.id}')">
+        Abrir
+        </button>
+        </td>
+
+
+        </tr>
+
+        `;
+
+
+    });
+
+
+
+    if(lista.length==0){
+
+
+        html =
+        "<tr><td colspan='6'>Sem Ordens de Trabalho</td></tr>";
+
+
+    }
+
+
+
+    document
+    .getElementById("listaOT")
+    .innerHTML = html;
+
+
+
+}
+
+
+
+
+function abrirOT(id){
+
+
+    alert(
+        "Abrir OT: " + id
+    );
+
+
+}
+
+
+
+</script>
