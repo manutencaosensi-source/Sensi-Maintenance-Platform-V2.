@@ -59,4 +59,3 @@ const TIPOS_MANUTENCAO = [
 
 // Versão da aplicação
 const APP_VERSION = "2.0";
-
