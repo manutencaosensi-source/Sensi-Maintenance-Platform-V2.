@@ -1,0 +1,112 @@
+<div class="pagina">
+
+
+<div class="pagina-header">
+
+<h2>
+Nova Ordem de Trabalho
+</h2>
+
+
+<button class="btnPrincipal"
+onclick="guardarOT()">
+
+Guardar OT
+
+</button>
+
+
+</div>
+
+
+
+<hr>
+
+
+<label>
+Equipamento
+</label>
+
+<br>
+
+<input id="equipamento"
+class="input"
+placeholder="Equipamento">
+
+
+<br><br>
+
+
+
+<label>
+Local
+</label>
+
+<br>
+
+<input id="local"
+class="input"
+placeholder="Local">
+
+
+<br><br>
+
+
+
+<label>
+Categoria
+</label>
+
+<br>
+
+<select id="categoria"
+class="input">
+
+<option>AVAC</option>
+<option>Eletricidade</option>
+<option>Canalização</option>
+<option>Piscinas</option>
+<option>Outros</option>
+
+</select>
+
+
+<br><br>
+
+
+
+<label>
+Prioridade
+</label>
+
+<br>
+
+<select id="prioridade"
+class="input">
+
+<option>Baixa</option>
+<option>Média</option>
+<option>Alta</option>
+<option>Urgente</option>
+
+</select>
+
+
+
+<br><br>
+
+
+
+<label>
+Observações
+</label>
+
+<br>
+
+<textarea id="observacoes"
+class="input"
+rows="5"></textarea>
+
+
+
+</div>
