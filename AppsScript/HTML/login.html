@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+
+<base target="_top">
+
+<?!= include('style'); ?>
+
+</head>
+
+
+<body>
+
+
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+">
+
+
+<div class="card" style="width:350px;">
+
+
+<h2>
+SENSI
+</h2>
+
+<p>
+Maintenance Platform
+</p>
+
+
+<br>
+
+
+<input 
+id="utilizador"
+placeholder="Utilizador"
+style="width:100%;padding:12px;margin-bottom:10px;"
+>
+
+
+
+<input 
+id="password"
+type="password"
+placeholder="Palavra-passe"
+style="width:100%;padding:12px;margin-bottom:15px;"
+>
+
+
+
+<button 
+class="btnPrincipal"
+style="width:100%;"
+onclick="login()">
+
+Entrar
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+<?!= include('script'); ?>
+
+
+</body>
+
+</html>
