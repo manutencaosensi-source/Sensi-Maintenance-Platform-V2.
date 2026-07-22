@@ -1,1 +1,370 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+
+<base target="_top">
+
+<?!= include('style'); ?>
+
+</head>
+
+
+<body>
+
+
+<div class="layout">
+
+
+
+<!-- MENU -->
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+<h2>SENSI</h2>
+
+<span>
+Maintenance Platform V2
+</span>
+
+</div>
+
+
+
+<nav>
+
+
+<button class="menu active">
+
+🏠 Dashboard
+
+</button>
+
+
+
+<button class="menu"
+onclick="carregarPagina('listaOT')">
+
+📋 Ordens de Trabalho
+
+</button>
+
+
+
+<button class="menu">
+
+🔧 Equipamentos
+
+</button>
+
+
+
+<button class="menu">
+
+📅 Preventivas
+
+</button>
+
+
+
+<button class="menu">
+
+👷 Técnicos
+
+</button>
+
+
+
+<button class="menu">
+
+📦 Stock
+
+</button>
+
+
+
+<button class="menu">
+
+📊 Relatórios
+
+</button>
+
+
+
+</nav>
+
+
+</aside>
+
+
+
+
+
+<!-- CONTEÚDO -->
+
+
+<main class="content">
+
+
+
+<div id="conteudo">
+
+
+
+<header class="topbar">
+
+
+<div>
+
+<h1>
+Dashboard
+</h1>
+
+
+<p>
+Bem-vindo ao Sensi Maintenance Platform
+</p>
+
+
+</div>
+
+
+
+<div class="user">
+
+👤 Tiago Silva
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+<section class="cards">
+
+
+
+<div class="card">
+
+<h3>
+OTs Pendentes
+</h3>
+
+
+<h1 id="kpiPendentes">
+0
+</h1>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+OTs em Curso
+</h3>
+
+
+<h1 id="kpiCurso">
+0
+</h1>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>
+Equipamentos
+</h3>
+
+
+<h1 id="kpiEquipamentos">
+0
+</h1>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h3>
+Preventivas Hoje
+</h3>
+
+
+<h1 id="kpiPreventivas">
+0
+</h1>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section class="panel">
+
+
+<div class="panel-header">
+
+<h2>
+Últimas Ordens de Trabalho
+</h2>
+
+</div>
+
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+OT
+</th>
+
+
+<th>
+Equipamento
+</th>
+
+
+<th>
+Estado
+</th>
+
+
+<th>
+Responsável
+</th>
+
+
+<th>
+Prioridade
+</th>
+
+
+</tr>
+
+</thead>
+
+
+
+<tbody id="tabelaOT">
+
+
+<tr>
+
+<td colspan="5">
+
+A carregar...
+
+</td>
+
+</tr>
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</section>
+
+
+
+
+
+
+
+<section class="panel">
+
+
+<h2>
+Alertas
+</h2>
+
+
+<div>
+
+✅ Sistema operacional
+
+</div>
+
+
+
+</section>
+
+
+
+
+</div>
+
+
+</main>
+
+
+
+
+</div>
+
+
+
+<?!= include('script'); ?>
+
+
+
+<script>
+
+
+window.onload=function(){
+
+
+carregarDashboard();
+
+
+};
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
